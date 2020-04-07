@@ -12,6 +12,8 @@ Copy-Item libmupdf.vcxproj.filters libmupdf_winrt.vcxproj.filters
 Copy-Item libthirdparty.vcxproj libthirdparty_winrt.vcxproj
 Copy-Item libthirdparty.vcxproj.filters libthirdparty_winrt.vcxproj.filters
 
+Copy-Item libfonts.vcxproj libfonts_winrt.vcxproj
+
 #Now after the copy, setup libmupdf for using gs with the gproof device and the api.
 (gc libmupdf.vcxproj) -replace 
 "<PreprocessorDefinitions>", 
@@ -128,6 +130,11 @@ Out-File libmupdf_winrt.vcxproj -encoding utf8
 "<RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
 
+(gc libfonts_winrt.vcxproj) -replace 
+"<RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>", 
+"<RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>" | 
+Out-File libfonts_winrt.vcxproj -encoding utf8
+
 (gc libmupdf_winrt.vcxproj) -replace 
 "<RuntimeLibrary>MultiThreaded</RuntimeLibrary>", 
 "<RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>" | 
@@ -137,6 +144,11 @@ Out-File libmupdf_winrt.vcxproj -encoding utf8
 "<RuntimeLibrary>MultiThreaded</RuntimeLibrary>", 
 "<RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
+
+(gc libfonts_winrt.vcxproj) -replace 
+"<RuntimeLibrary>MultiThreaded</RuntimeLibrary>", 
+"<RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>" | 
+Out-File libfonts_winrt.vcxproj -encoding utf8
 
 # Use v120 platform toolset (VS 2013 version) replace uses regex
 # looks for start (?<=<PlatformToolset>), stuff between .*?, and end (?=<) (part of </PlatformToolset>)
@@ -151,6 +163,11 @@ Out-File libmupdf_winrt.vcxproj -encoding utf8
 "v142" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
 
+(gc libfonts_winrt.vcxproj) -replace 
+"(?<=<PlatformToolset>).*?(?=<)", 
+"v142" | 
+Out-File libfonts_winrt.vcxproj -encoding utf8
+
 # Make Windows 8.1 type project
 (gc libmupdf_winrt.vcxproj) -replace 
 "<CharacterSet>MultiByte</CharacterSet>", 
@@ -161,6 +178,11 @@ Out-File libmupdf_winrt.vcxproj -encoding utf8
 "<CharacterSet>MultiByte</CharacterSet>", 
 "<CharacterSet>MultiByte</CharacterSet>`r`n    <WindowsAppContainer>true</WindowsAppContainer>" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
+
+(gc libfonts_winrt.vcxproj) -replace 
+"<CharacterSet>MultiByte</CharacterSet>", 
+"<CharacterSet>MultiByte</CharacterSet>`r`n    <WindowsAppContainer>true</WindowsAppContainer>" | 
+Out-File libfonts_winrt.vcxproj -encoding utf8
 
 # Add NO_GETENV to libthirdparty_winrt for openjpeg memory management and WinRT
 # Note openjpeg repos recently broken as it still has a setenv
@@ -239,6 +261,11 @@ Out-File libmupdf_winrt.vcxproj -encoding utf8
 "<PropertyGroup Label=""Globals"">`r`n    <ProjectName>libthirdparty_winrt</ProjectName>" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
 
+(gc libfonts_winrt.vcxproj) -replace 
+"<PropertyGroup Label=""Globals"">", 
+"<PropertyGroup Label=""Globals"">`r`n    <ProjectName>libfonts_winrt</ProjectName>" | 
+Out-File libfonts_winrt.vcxproj -encoding utf8
+
 # Add information about Min Visual Studio Version and about app store
 (gc libmupdf_winrt.vcxproj) -replace "<RootNamespace>mupdf</RootNamespace>", 
 "<RootNamespace>mupdf</RootNamespace>`r`n    <MinimumVisualStudioVersion>13.0</MinimumVisualStudioVersion>`r`n    <ApplicationType>Windows Store</ApplicationType>`r`n    <ApplicationTypeRevision>8.1</ApplicationTypeRevision>" | 
@@ -247,6 +274,10 @@ Out-File libmupdf_winrt.vcxproj -encoding utf8
 (gc libthirdparty_winrt.vcxproj) -replace "<RootNamespace>mupdf</RootNamespace>", 
 "<RootNamespace>mupdf</RootNamespace>`r`n    <MinimumVisualStudioVersion>13.0</MinimumVisualStudioVersion>`r`n    <ApplicationType>Windows Store</ApplicationType>`r`n    <ApplicationTypeRevision>8.1</ApplicationTypeRevision>" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
+
+(gc libfonts_winrt.vcxproj) -replace "<RootNamespace>libfonts</RootNamespace>", 
+"<RootNamespace>libfonts</RootNamespace>`r`n    <MinimumVisualStudioVersion>13.0</MinimumVisualStudioVersion>`r`n    <ApplicationType>Windows Store</ApplicationType>`r`n    <ApplicationTypeRevision>8.1</ApplicationTypeRevision>" | 
+Out-File libfonts_winrt.vcxproj -encoding utf8
 
 # Not using precompiled headers and set warning level
 (gc libmupdf_winrt.vcxproj) -replace 
@@ -258,6 +289,11 @@ Out-File libmupdf_winrt.vcxproj -encoding utf8
 "</ClCompile>", 
 "  <PrecompiledHeader>NotUsing</PrecompiledHeader>`r`n    <SDLCheck>false</SDLCheck>`r`n</ClCompile>" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
+
+(gc libfonts_winrt.vcxproj) -replace 
+"</ClCompile>", 
+"  <PrecompiledHeader>NotUsing</PrecompiledHeader>`r`n    <SDLCheck>false</SDLCheck>`r`n</ClCompile>" | 
+Out-File libfonts_winrt.vcxproj -encoding utf8
 
 # Set path names for output and intermediate directory. This syntax is required to handle
 # use of () in the strings
@@ -295,11 +331,29 @@ $r='<IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>'
 $v='<IntDir>winrt\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>'
 (gc libmupdf_winrt.vcxproj).Replace($r,$v) | Out-File libmupdf_winrt.vcxproj -encoding utf8
 
+#libfonts
+$r='<OutDir>$(Configuration)\</OutDir>'
+$v='<OutDir>winrt\$(Platform)\$(Configuration)\</OutDir>'
+(gc libfonts_winrt.vcxproj).Replace($r,$v) | Out-File libfonts_winrt.vcxproj -encoding utf8
+
+$r='<IntDir>$(Configuration)\$(ProjectName)\</IntDir>'
+$v='<IntDir>winrt\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>'
+(gc libfonts_winrt.vcxproj).Replace($r,$v) | Out-File libfonts_winrt.vcxproj -encoding utf8
+
+$r='<OutDir>$(Platform)\$(Configuration)\</OutDir>'
+$v='<OutDir>winrt\$(Platform)\$(Configuration)\</OutDir>'
+(gc libfonts_winrt.vcxproj).Replace($r,$v) | Out-File libfonts_winrt.vcxproj -encoding utf8
+
+$r='<IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>'
+$v='<IntDir>winrt\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>'
+(gc libfonts_winrt.vcxproj).Replace($r,$v) | Out-File libfonts_winrt.vcxproj -encoding utf8
+
 # Set character set 
 $r='<CharacterSet>MultiByte</CharacterSet>'
 $v='<CharacterSet>UniCode</CharacterSet>'
 (gc libthirdparty_winrt.vcxproj).Replace($r,$v) | Out-File libthirdparty_winrt.vcxproj -encoding utf8
 (gc libmupdf_winrt.vcxproj).Replace($r,$v) | Out-File libmupdf_winrt.vcxproj -encoding utf8
+(gc libfonts_winrt.vcxproj).Replace($r,$v) | Out-File libfonts_winrt.vcxproj -encoding utf8
 
 # Remove prebuild event.  This is handled with project dependency and causes an error for the
 # winRT build
