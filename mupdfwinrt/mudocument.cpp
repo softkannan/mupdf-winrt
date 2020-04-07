@@ -156,19 +156,22 @@ Windows::Foundation::IAsyncOperationWithProgress<int, double>^
 			   we are just looping over the pages here so it is not too bad */
 			reporter.report(progress);
 
-			if (is_task_cancellation_requested())
-			{
-				// Cancel the current task.
-				cancel_current_task();
-			}
+			//TODO: revisit cancel
+			//if (is_task_cancellation_requested())
+			//{
+			//	// Cancel the current task.
+			//	cancel_current_task();
+			//}
 
 			if (box_count > 0)
 			{
 				return result;
 			}
-			if (is_task_cancellation_requested())
-			{
-			}
+
+			////TODO: revisit cancel
+			//if (is_task_cancellation_requested())
+			//{
+			//}
 		}
 		reporter.report(100.0);
 		if (box_count == 0)

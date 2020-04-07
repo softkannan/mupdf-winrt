@@ -155,17 +155,17 @@ Out-File libfonts_winrt.vcxproj -encoding utf8
 # where the stuff between gets replaced with v120
 (gc libmupdf_winrt.vcxproj) -replace 
 "(?<=<PlatformToolset>).*?(?=<)", 
-"v120" | 
+"v142" | 
 Out-File libmupdf_winrt.vcxproj -encoding utf8
 
 (gc libthirdparty_winrt.vcxproj) -replace 
 "(?<=<PlatformToolset>).*?(?=<)", 
-"v120" | 
+"v142" | 
 Out-File libthirdparty_winrt.vcxproj -encoding utf8
 
 (gc libfonts_winrt.vcxproj) -replace 
 "(?<=<PlatformToolset>).*?(?=<)", 
-"v120" | 
+"v142" | 
 Out-File libfonts_winrt.vcxproj -encoding utf8
 
 # Make Windows 8.1 type project

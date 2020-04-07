@@ -32,44 +32,45 @@
     <ProjectName>mupdfwinrt</ProjectName>
     <RootNamespace>mupdfwinrt</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
-    <ApplicationTypeRevision>8.1</ApplicationTypeRevision>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -133,10 +134,11 @@
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../libmupdf/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>runtimeobject.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
+      <AdditionalDependencies>runtimeobject.lib;WindowsApp.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -151,10 +153,11 @@
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../libmupdf/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>runtimeobject.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
+      <AdditionalDependencies>runtimeobject.lib;WindowsApp.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -169,10 +172,11 @@
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../libmupdf/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>runtimeobject.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
+      <AdditionalDependencies>runtimeobject.lib;WindowsApp.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -187,10 +191,11 @@
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../libmupdf/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>runtimeobject.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
+      <AdditionalDependencies>runtimeobject.lib;WindowsApp.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -205,10 +210,11 @@
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../libmupdf/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>runtimeobject.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib</AdditionalDependencies>
+      <AdditionalDependencies>runtimeobject.lib;WindowsApp.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -223,10 +229,11 @@
       <AdditionalUsingDirectories>$(WindowsSDK_WindowsMetadata);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../libmupdf/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>runtimeobject.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib</AdditionalDependencies>
+      <AdditionalDependencies>runtimeobject.lib;WindowsApp.lib;../libmupdf/platform/win32/winrt/$(Platform)/Release/libfonts_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libmupdf_winrt.lib;../libmupdf/platform/win32/winrt/$(Platform)/$(Configuration)/libthirdparty_winrt.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>

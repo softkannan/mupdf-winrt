@@ -8,7 +8,7 @@
 #include "Links.h"
 #include "ppltasks.h"
 #include "ContentItem.h"
-#include <winnt.h>
+//#include <winnt.h>
 #include <collection.h>
 
 namespace mupdfwinrt
