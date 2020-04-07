@@ -1,6 +1,6 @@
 [submodule "libmupdf"]
 	path = libmupdf
-	url = ../mupdf.git
+	url = https://github.com/softkannan/mupdf.git
 [submodule "ghostpdl"]
 	path = ghostpdl
 	url = http://git.ghostscript.com/ghostpdl.git
